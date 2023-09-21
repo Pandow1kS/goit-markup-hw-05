@@ -14,6 +14,11 @@ p {
   margin-top: auto;
   margin-bottom: auto;
 }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 :root {
   --color-brand: #2196f3;
   --color-primary: #212121;
@@ -81,6 +86,9 @@ body {
   letter-spacing: 0.28px;
   padding: 32px 0px;
   display: block;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .current::after {
   content: "";
@@ -98,9 +106,6 @@ body {
 .header-link.current {
   color: var(--color-brand);
   padding: 32px 0px;
-  transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 nav {
   display: flex;
@@ -130,18 +135,27 @@ nav {
   letter-spacing: 0.28px;
   display: flex;
   align-items: center;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contact-link-icon-mail {
   fill: var(--color-sprite1);
   width: 16px;
   height: 12px;
   margin-right: 10px;
+  transition-property: fill;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contact-link-icon-phone {
   fill: var(--color-sprite1);
   width: 10px;
   height: 12px;
   margin-right: 10px;
+  transition-property: fill;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contact-link:hover,
 .contact-link:hover svg,
@@ -149,9 +163,6 @@ nav {
 .contact-link:focus svg {
   color: var(--color-brand);
   fill: var(--color-brand);
-  transition-property: color, fill;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer {
@@ -168,6 +179,9 @@ nav {
 }
 .footer-li {
   margin-bottom: 9px;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-li:last-child {
   margin-bottom: 0;
@@ -175,9 +189,6 @@ nav {
 .footer-li .contact-link:hover,
 .footer-li .contact-link:focus {
   color: var(--color-primary-light);
-  transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-logo {
   color: var(--color-primary-light);
@@ -225,21 +236,21 @@ nav {
   align-items: center;
   justify-content: center;
   background-color: rgba(255, 255, 255, 0.1);
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .join svg {
   width: 20px;
   height: 20px;
   fill: var(--color-primary-light);
-}
-.join a:hover,
-.join a:hover svg,
-.join a:focus,
-.join a:focus svg {
-  background-color: var(--color-brand);
-  fill: var(--color-primary-light);
-  transition-property: background-color, fill;
+  transition-property: fill;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.join a:hover,
+.join a:focus {
+  background-color: var(--color-brand);
 }
 
 .main {
@@ -286,10 +297,6 @@ nav {
   display: flex;
   justify-content: center;
   margin: auto;
-
-  transition-property: background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .backdrop {
   position: fixed;
@@ -301,24 +308,29 @@ nav {
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
     visibility 250ms cubic-bezier(0.4, 0, 0.2, 1),
     transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
 }
 .backdrop.is-hidden {
   opacity: 0;
-  pointer-events: none;
   visibility: hidden;
-  transform: scale(1.15);
 }
 .modal {
-  background: #ffffff;
+  background: var(--color-primary-light);
   width: 528px;
   height: 581px;
   border-radius: 4px;
   box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   position: absolute;
-  top: 50%;
-  left: 50%;
   transform: translate(-50%, -50%);
+  transform: scale(1);
+  transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal button {
   position: absolute;
@@ -483,22 +495,27 @@ nav {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .section-team-icon svg {
   fill: var(--color-sprite1);
   width: 20px;
   height: 20px;
-}
-.section-team-icon a:hover,
-.section-team-icon a:hover svg,
-.section-team-icon a:focus,
-.section-team-icon a:focus svg {
-  background-color: var(--color-brand);
-  fill: var(--color-primary-light);
-  transition-property: background-color, fill;
+  transition-property: fill;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.section-team-icon a:hover,
+.section-team-icon a:focus {
+  background-color: var(--color-brand);
+}
+.section-team-icon a:hover svg,
+.section-team-icon a:focus svg {
+  fill: var(--color-primary-light);
 }
 .partners {
   padding-top: 94px;
@@ -533,11 +550,17 @@ nav {
   justify-content: center;
   border-radius: 4px;
   border: 1px solid var(--color-sprite1);
+  transition-property: border-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .partners svg {
   fill: var(--color-sprite1);
   width: 106px;
   height: 60px;
+  transition-property: fill;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .partners a:hover,
 .partners a:hover svg,
@@ -545,23 +568,20 @@ nav {
 .partners a:focus svg {
   border-color: var(--color-brand);
   fill: var(--color-brand);
-  transition-property: fill, border-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.section-services {
+.section-service {
   padding-top: 94px;
   padding-bottom: 94px;
   justify-content: center;
 }
-.services-main-btn {
+.service-main-btn {
   display: flex;
   list-style: none;
   justify-content: center;
   margin-bottom: 50px;
   gap: 8px;
 }
-.services-main-btn button {
+.service-main-btn button {
   background-color: #f5f4fa;
   color: var(--color-primary);
   border: none;
@@ -574,17 +594,17 @@ nav {
   padding: 6px 22px;
   display: flex;
   cursor: pointer;
+  transition-property: background-color, color, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.services-main-btn button:hover,
-.services-main-btn button:active,
-.services-main-btn button:focus {
+.service-main-btn button:hover,
+.service-main-btn button:active,
+.service-main-btn button:focus {
   background-color: var(--color-brand);
   color: var(--color-primary-light);
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.12),
     0px 1px 2px 0px rgba(0, 0, 0, 0.08), 0px 3px 1px 0px rgba(0, 0, 0, 0.1);
-  transition-property: background-color, color, box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .services {
   list-style: none;
@@ -594,6 +614,7 @@ nav {
   width: 1170px;
   gap: 30px;
 }
+
 .services li {
   max-width: 370px;
 }
@@ -601,16 +622,17 @@ nav {
 .services a {
   text-decoration: none;
   display: block;
-}
-.services a:hover .overlay p,
-.services a:focus {
-  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
-    0px 2px 2px rgba(0, 0, 0, 0.12);
-  transform: translatey(0);
   transition-property: box-shadow;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.services a:hover,
+.services a:focus {
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12);
+}
+
 .box {
   position: relative;
   overflow: hidden;
@@ -623,11 +645,12 @@ nav {
   font-style: normal;
   line-height: 1.55;
   letter-spacing: 0.54px;
-  padding: 63px 24px;
 }
 
 .overlay {
   position: absolute;
+
+  padding: 63px 24px;
   top: 0;
   left: 0;
   width: 100%;
@@ -636,9 +659,12 @@ nav {
 
   transform: translatey(100%);
   transition: transform 250ms ease-in-out;
+  transition-property: inherit;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.box:hover .overlay {
+.services a:hover .overlay {
   transform: translatey(0);
 }
 
